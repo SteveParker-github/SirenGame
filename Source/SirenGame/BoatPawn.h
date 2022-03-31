@@ -43,6 +43,9 @@ private:
 	void UnsetAim();
 	void Fire();
 
+	void UpdateWaterFlow();
+	void NewWaterDirection();
+
 	bool bAiming;
 	
 	FVector MovementInput;
@@ -65,4 +68,25 @@ private:
 
 	UPROPERTY(VisibleAnywhere)
 	float Health;
+
+	float WaterDirectionTimer = 0;
+
+	UPROPERTY(EditDefaultsOnly, Category = WaterFlow)
+	float WaterDirectionCooldown = 2;
+
+	UPROPERTY(EditDefaultsOnly, Category = WaterFlow)
+	float Force = 1385;
+
+	TArray<AActor *> WaterFlows;
+
+	FVector TargetLocation;
+
+	UPROPERTY()
+	AActor* TargetWaterFlow;
+
+	UPROPERTY()
+	FVector WaterFlowDirection;
+
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* BoatMesh;
 };

@@ -10,11 +10,17 @@
 #include "Projectile.h"
 #include "GenericPlatform/GenericPlatformMath.h"
 
+#include "WaterFlow.h"
+#include "Components/SplineComponent.h"
+
 // Sets default values
 ABoatPawn::ABoatPawn()
 {
 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	BoatMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BoatMesh"));
+	SetRootComponent(BoatMesh);
 }
 
 // Called when the game starts or when spawned
@@ -26,12 +32,17 @@ void ABoatPawn::BeginPlay()
 
 	MouseCursor = GetWorld()->SpawnActor<AMouseCursor>(MouseCursorClass);
 	MouseCursor->SetOwner(this);
+
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AWaterFlow::StaticClass(), WaterFlows);
 }
 
 // Called every frame
 void ABoatPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	WaterDirectionTimer -= DeltaTime;
+
 	if (bAiming)
 	{
 		InitiateAim();
@@ -47,6 +58,8 @@ void ABoatPawn::Tick(float DeltaTime)
 	}
 
 	AddMovementInput(GetActorForwardVector() * MovementInput.Size());
+
+	UpdateWaterFlow();
 }
 
 // Called to bind functionality to input
@@ -188,4 +201,43 @@ void ABoatPawn::Fire()
 			}
 		}
 	}
+}
+
+void ABoatPawn::UpdateWaterFlow()
+{
+	if (WaterDirectionTimer <= 0)
+	{
+		NewWaterDirection();
+		WaterDirectionTimer = WaterDirectionCooldown;
+	}
+
+	USplineComponent *Spline = Cast<USplineComponent>(TargetWaterFlow->GetRootComponent());
+
+	if (Spline != nullptr)
+	{
+		WaterFlowDirection = Spline->FindDirectionClosestToWorldLocation(GetActorLocation(), ESplineCoordinateSpace::World);
+		WaterFlowDirection.Z = 0;
+		BoatMesh->AddForce(WaterFlowDirection * Force * BoatMesh->GetMass());
+	}
+}
+
+void ABoatPawn::NewWaterDirection()
+{
+	float ClosestDistance = FLT_MAX; //Coulnd't find a way to make it infinite
+	FVector BoatLocation = GetActorLocation();
+
+	for (AActor *WaterFlow : WaterFlows)
+	{
+		USplineComponent * Spline = Cast<USplineComponent>(WaterFlow->GetRootComponent());
+		if (Spline == nullptr) return;
+
+		FVector Location = Spline->FindLocationClosestToWorldLocation(BoatLocation, ESplineCoordinateSpace::World);
+		float CheckDistance = BoatLocation.Distance(BoatLocation, Location);
+		if (CheckDistance < ClosestDistance)
+		{
+			ClosestDistance = CheckDistance;
+			TargetWaterFlow = WaterFlow;
+		}
+	}
+	UE_LOG(LogTemp, Warning, TEXT("Target Spline: %s"), *TargetWaterFlow->GetName());
 }
