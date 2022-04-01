@@ -81,7 +81,10 @@ private:
 	float WaterDirectionCooldown = 2;
 
 	UPROPERTY(EditDefaultsOnly, Category = WaterFlow)
-	float Force = 1385;
+	float Force = 150;
+
+	UPROPERTY(EditDefaultsOnly, Category = Siren)
+	float SirenForce = 1385;
 
 	TArray<AActor *> WaterFlows;
 

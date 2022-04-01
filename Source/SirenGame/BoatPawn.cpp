@@ -236,7 +236,7 @@ void ABoatPawn::UpdateWaterFlow()
 	{
 		WaterFlowDirection = Spline->FindDirectionClosestToWorldLocation(GetActorLocation(), ESplineCoordinateSpace::World);
 		WaterFlowDirection.Z = 0;
-		BoatMesh->AddForce(WaterFlowDirection * Force * BoatMesh->GetMass());
+		BoatMesh->SetPhysicsLinearVelocity(WaterFlowDirection * Force);
 	}
 }
 
@@ -265,5 +265,5 @@ void ABoatPawn::MoveTowardsSiren()
 	FVector SirenHeading = SirenLocation - GetActorLocation();
 	SirenHeading.Z = 0;
 	SirenHeading = SirenHeading.GetClampedToSize(-1, 1);
-	BoatMesh->AddForce(SirenHeading * Force * BoatMesh->GetMass());
+	BoatMesh->AddForce(SirenHeading * SirenForce * BoatMesh->GetMass());
 }
