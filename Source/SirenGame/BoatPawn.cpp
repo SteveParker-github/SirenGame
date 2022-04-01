@@ -28,7 +28,9 @@ void ABoatPawn::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Health = MaxHealth;
+	BoatHealth = MaxHealth;
+	CrewHealth = MaxHealth;
+	bInSirenZone = false;
 
 	MouseCursor = GetWorld()->SpawnActor<AMouseCursor>(MouseCursorClass);
 	MouseCursor->SetOwner(this);
@@ -59,7 +61,16 @@ void ABoatPawn::Tick(float DeltaTime)
 
 	AddMovementInput(GetActorForwardVector() * MovementInput.Size());
 
-	UpdateWaterFlow();
+
+	if (bInSirenZone)
+	{
+		CrewHealth -= DeltaTime * 1; // Causes 1 damge per second.
+		MoveTowardsSiren();
+	}
+	else
+	{
+		UpdateWaterFlow();
+	}
 }
 
 // Called to bind functionality to input
@@ -78,11 +89,22 @@ void ABoatPawn::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent)
 float ABoatPawn::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser)
 {
 	float DamageToApply = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
-	DamageToApply = FMath::Min(Health, DamageToApply);
-	Health -= DamageToApply;
+	DamageToApply = FMath::Min(BoatHealth, DamageToApply);
+	BoatHealth -= DamageToApply;
 
-	UE_LOG(LogTemp, Warning, TEXT("Health: %f"), Health);
+	UE_LOG(LogTemp, Warning, TEXT("Health: %f"), BoatHealth);
 	return DamageToApply;
+}
+
+void ABoatPawn::SetSirenZone(FVector NewSirenLocation)
+{
+	SirenLocation = NewSirenLocation;
+	bInSirenZone = true;
+}
+
+void ABoatPawn::UnsetSirenZone()
+{
+	bInSirenZone = false;
 }
 
 void ABoatPawn::MoveForward(float AxisValue)
@@ -176,9 +198,6 @@ void ABoatPawn::Fire()
 		ArrowLocation.Z += 200.f;
 		FRotator ArrowDirection = (MouseLocation - ActorLocation).Rotation();
 		float TargetDistance = ArrowLocation.Distance(MouseLocation, ActorLocation);
-		UE_LOG(LogTemp, Warning, TEXT("Distance: %f"), TargetDistance);
-		// calculated from power
-		// ArrowDirection.Pitch = 89.513 - 0.00245295 * FMath::Pow(TargetDistance, 1.24239);
 		// Parabola/hyperbola graph
 		ArrowDirection.Pitch = -2.6016239843361 * FMath::Pow(10, -6) * FMath::Pow(TargetDistance, 2) - 0.0104899 * TargetDistance + 89.7078;
 
@@ -223,7 +242,7 @@ void ABoatPawn::UpdateWaterFlow()
 
 void ABoatPawn::NewWaterDirection()
 {
-	float ClosestDistance = FLT_MAX; //Coulnd't find a way to make it infinite
+	float ClosestDistance = FLT_MAX;
 	FVector BoatLocation = GetActorLocation();
 
 	for (AActor *WaterFlow : WaterFlows)
@@ -239,5 +258,12 @@ void ABoatPawn::NewWaterDirection()
 			TargetWaterFlow = WaterFlow;
 		}
 	}
-	UE_LOG(LogTemp, Warning, TEXT("Target Spline: %s"), *TargetWaterFlow->GetName());
+}
+
+void ABoatPawn::MoveTowardsSiren()
+{
+	FVector SirenHeading = SirenLocation - GetActorLocation();
+	SirenHeading.Z = 0;
+	SirenHeading = SirenHeading.GetClampedToSize(-1, 1);
+	BoatMesh->AddForce(SirenHeading * Force * BoatMesh->GetMass());
 }

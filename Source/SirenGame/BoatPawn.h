@@ -31,7 +31,15 @@ public:
 
 	float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 
+	void SetSirenZone(FVector SirenLocation);
 
+	void UnsetSirenZone();
+
+	UPROPERTY(VisibleAnywhere)
+	float BoatHealth;
+
+	UPROPERTY(VisibleAnywhere)
+	float CrewHealth;
 
 private:
 	void MoveForward(float AxisValue);
@@ -45,6 +53,7 @@ private:
 
 	void UpdateWaterFlow();
 	void NewWaterDirection();
+	void MoveTowardsSiren();
 
 	bool bAiming;
 	
@@ -66,9 +75,6 @@ private:
 	UPROPERTY(EditDefaultsOnly)
 	float MaxHealth = 100;
 
-	UPROPERTY(VisibleAnywhere)
-	float Health;
-
 	float WaterDirectionTimer = 0;
 
 	UPROPERTY(EditDefaultsOnly, Category = WaterFlow)
@@ -81,12 +87,14 @@ private:
 
 	FVector TargetLocation;
 
-	UPROPERTY()
 	AActor* TargetWaterFlow;
 
-	UPROPERTY()
 	FVector WaterFlowDirection;
 
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* BoatMesh;
+
+	FVector SirenLocation;
+	
+	bool bInSirenZone;
 };

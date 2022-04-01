@@ -10,7 +10,12 @@
 		}
 	],
 	"settings": {
-		"typescript.tsc.autoDetect": "off"
+		"typescript.tsc.autoDetect": "off",
+		"C_Cpp.default.forcedInclude": [
+			"${default}",
+			"E:\\ProgramSolutions\\Unreal\\SirenGame\\Intermediate\\Build\\Win64\\UE4Editor\\Development\\SirenGame\\Definitions.SirenGame.h",
+			"E:\\ProgramSolutions\\Unreal\\SirenGame\\Intermediate\\Build\\Win64\\SirenGameEditor\\Development\\Engine\\SharedPCH.Engine.ShadowErrors.h"
+		]
 	},
 	"extensions": {
 		"recommendations": [
