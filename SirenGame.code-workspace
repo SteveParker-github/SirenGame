@@ -6,16 +6,11 @@
 		},
 		{
 			"name": "UE4",
-			"path": "P:\\Program Files\\Epic Games\\UE_4.27"
+			"path": "C:\\Program Files\\Epic Games\\UE_4.27"
 		}
 	],
 	"settings": {
-		"typescript.tsc.autoDetect": "off",
-		"C_Cpp.default.forcedInclude": [
-			"${default}",
-			"E:\\ProgramSolutions\\Unreal\\testfolder\\SirenGame\\Intermediate\\Build\\Win64\\UE4Editor\\Development\\SirenGame\\Definitions.SirenGame.h",
-			"E:\\ProgramSolutions\\Unreal\\testfolder\\SirenGame\\Intermediate\\Build\\Win64\\SirenGameEditor\\Development\\Engine\\SharedPCH.Engine.ShadowErrors.h"
-		]
+		"typescript.tsc.autoDetect": "off"
 	},
 	"extensions": {
 		"recommendations": [
