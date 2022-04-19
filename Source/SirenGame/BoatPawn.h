@@ -36,7 +36,13 @@ public:
 	void UnsetSirenZone();
 
 	UPROPERTY(VisibleAnywhere)
+	float MaxBoatHealth;
+
+	UPROPERTY(VisibleAnywhere)
 	float BoatHealth;
+
+	UPROPERTY(VisibleAnywhere)
+	float MaxCrewHealth;
 
 	UPROPERTY(VisibleAnywhere)
 	float CrewHealth;
@@ -73,7 +79,7 @@ private:
 	TSubclassOf<class AProjectile> ProjectileClass;
 
 	UPROPERTY(EditDefaultsOnly)
-	float MaxHealth = 100;
+	float MaxStartingHealth = 100;
 
 	float WaterDirectionTimer = 0;
 

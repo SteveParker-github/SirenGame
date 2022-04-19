@@ -1,17 +1,15 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BoatPawn.h"
-
 #include "MouseCursor.h"
 #include "Math/UnrealMathUtility.h"
 #include "Kismet/GameplayStatics.h"
-
 #include "DrawDebugHelpers.h"
 #include "Projectile.h"
 #include "GenericPlatform/GenericPlatformMath.h"
-
 #include "WaterFlow.h"
 #include "Components/SplineComponent.h"
+#include "InGameHUD.h"
 
 // Sets default values
 ABoatPawn::ABoatPawn()
@@ -28,8 +26,17 @@ void ABoatPawn::BeginPlay()
 {
 	Super::BeginPlay();
 
-	BoatHealth = MaxHealth;
-	CrewHealth = MaxHealth;
+	MaxBoatHealth = MaxStartingHealth;
+	MaxCrewHealth = MaxStartingHealth;
+	BoatHealth = MaxBoatHealth;
+	CrewHealth = MaxCrewHealth;
+
+	AInGameHUD* InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+		if (InGameHUD)
+		{
+			InGameHUD->UpdateCrewHealth(CrewHealth / MaxCrewHealth);
+			InGameHUD->UpdateBoatHealth(BoatHealth / MaxBoatHealth);
+		}
 	bInSirenZone = false;
 
 	MouseCursor = GetWorld()->SpawnActor<AMouseCursor>(MouseCursorClass);
@@ -65,6 +72,11 @@ void ABoatPawn::Tick(float DeltaTime)
 	if (bInSirenZone)
 	{
 		CrewHealth -= DeltaTime * 1; // Causes 1 damge per second.
+		AInGameHUD* InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+		if (InGameHUD)
+		{
+			InGameHUD->UpdateCrewHealth(CrewHealth / MaxCrewHealth);
+		}
 		MoveTowardsSiren();
 	}
 	else
@@ -93,6 +105,13 @@ float ABoatPawn::TakeDamage(float DamageAmount, struct FDamageEvent const& Damag
 	BoatHealth -= DamageToApply;
 
 	UE_LOG(LogTemp, Warning, TEXT("Health: %f"), BoatHealth);
+
+	AInGameHUD* InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+	if (InGameHUD)
+	{
+		InGameHUD->UpdateBoatHealth(BoatHealth / MaxBoatHealth);
+	}
+
 	return DamageToApply;
 }
 
