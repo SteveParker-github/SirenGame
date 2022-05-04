@@ -28,14 +28,17 @@ void ABoatPawn::BeginPlay()
 
 	MaxBoatHealth = MaxStartingHealth;
 	MaxCrewHealth = MaxStartingHealth;
+	MaxArcherHealth = MaxStartingHealth;
 	BoatHealth = MaxBoatHealth;
 	CrewHealth = MaxCrewHealth;
+	ArcherHealth = MaxArcherHealth;
 
 	AInGameHUD* InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
 		if (InGameHUD)
 		{
 			InGameHUD->UpdateCrewHealth(CrewHealth / MaxCrewHealth);
 			InGameHUD->UpdateBoatHealth(BoatHealth / MaxBoatHealth);
+			InGameHUD->UpdateArcherHealth(ArcherHealth / MaxArcherHealth);
 		}
 	bInSirenZone = false;
 
@@ -71,11 +74,14 @@ void ABoatPawn::Tick(float DeltaTime)
 
 	if (bInSirenZone)
 	{
-		CrewHealth -= DeltaTime * 1; // Causes 1 damge per second.
+		float Damage = DeltaTime * 1; // Causes 1 damge per second.
+		CrewHealth -= Damage; 
+		ArcherHealth -= Damage;
 		AInGameHUD* InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
 		if (InGameHUD)
 		{
 			InGameHUD->UpdateCrewHealth(CrewHealth / MaxCrewHealth);
+			InGameHUD->UpdateArcherHealth(ArcherHealth / MaxArcherHealth);
 		}
 		MoveTowardsSiren();
 	}

@@ -47,6 +47,12 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	float CrewHealth;
 
+	UPROPERTY(VisibleAnywhere)
+	float MaxArcherHealth;
+
+	UPROPERTY(VisibleAnywhere)
+	float ArcherHealth;
+
 private:
 	void MoveForward(float AxisValue);
 	void MoveRight(float AxisValue);

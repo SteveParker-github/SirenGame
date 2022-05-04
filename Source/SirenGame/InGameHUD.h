@@ -31,6 +31,9 @@ public:
 	UFUNCTION()
 	void UpdateCrewHealth(float HealthPercentage);
 
+	UFUNCTION()
+	void UpdateArcherHealth(float HealthPercentage);
+
 	UPROPERTY(EditDefaultsOnly, Category = "Widgets")
 	TSubclassOf<UUserWidget> HealthWidgetClass;
 

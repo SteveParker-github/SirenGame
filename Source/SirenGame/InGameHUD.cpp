@@ -48,3 +48,11 @@ void AInGameHUD::UpdateCrewHealth(float HealthPercentage)
         HealthWidget->UpdateCrewHealth(HealthPercentage);
     }
 }
+
+void AInGameHUD::UpdateArcherHealth(float HealthPercentage)
+{
+    if (HealthWidget)
+    {
+        HealthWidget->UpdateArcherHealth(HealthPercentage);
+    }
+}

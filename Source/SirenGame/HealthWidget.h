@@ -26,9 +26,15 @@ public:
 	UPROPERTY(EditAnywhere, BluePrintReadWrite, meta = (BindWidget))
 	class UProgressBar* ProgressCrewHealth;
 
+	UPROPERTY(EditAnywhere, BluePrintReadWrite, meta = (BindWidget))
+	class UProgressBar* ProgressArcherHealth;
+
 	void UpdateBoatHealth(float HealthPercentage);
 
 	void UpdateCrewHealth(float HealthPercentage);
 
+	void UpdateArcherHealth(float HealthPercentage);
 
+private:
+	FLinearColor GetColour(float Percentage);
 };
