@@ -81,7 +81,7 @@ private:
 	float WaterDirectionCooldown = 2;
 
 	UPROPERTY(EditDefaultsOnly, Category = WaterFlow)
-	float Force = 150;
+	float Force = 0.4;
 
 	UPROPERTY(EditDefaultsOnly, Category = Siren)
 	float SirenForce = 1385;
@@ -103,6 +103,10 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UMatineeCameraShake> CamShake;
+
+	bool bHasCollided;
+
+	float CollideTimer;
 
 	UFUNCTION()    
     void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
