@@ -81,7 +81,7 @@ private:
 	float WaterDirectionCooldown = 2;
 
 	UPROPERTY(EditDefaultsOnly, Category = WaterFlow)
-	float Force = 150;
+	float Force = 0.4;
 
 	UPROPERTY(EditDefaultsOnly, Category = Siren)
 	float SirenForce = 1385;
@@ -100,4 +100,10 @@ private:
 	FVector SirenLocation;
 	
 	bool bInSirenZone;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UMatineeCameraShake> CamShake;
+
+	UFUNCTION()    
+    void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 };

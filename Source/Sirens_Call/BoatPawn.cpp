@@ -35,6 +35,7 @@ void ABoatPawn::BeginPlay()
 	MouseCursor = GetWorld()->SpawnActor<AMouseCursor>(MouseCursorClass);
 	MouseCursor->SetOwner(this);
 
+	BoatMesh->OnComponentHit.AddDynamic(this, &ABoatPawn::OnHit);
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AWaterFlow::StaticClass(), WaterFlows);
 }
 
@@ -59,7 +60,9 @@ void ABoatPawn::Tick(float DeltaTime)
 		SetActorRotation(NewRotation, ETeleportType::None);
 	}
 
-	AddMovementInput(GetActorForwardVector() * MovementInput.Size());
+	FVector Direction = GetActorForwardVector() * MovementInput.Size();
+	Direction.Z = -2;
+	AddMovementInput(Direction);
 
 	if (bInSirenZone)
 	{
@@ -227,7 +230,7 @@ void ABoatPawn::UpdateWaterFlow()
 		NewWaterDirection();
 		WaterDirectionTimer = WaterDirectionCooldown;
 	}
-	
+
 	if (TargetWaterFlow != nullptr)
 	{
 		USplineComponent *Spline = Cast<USplineComponent>(TargetWaterFlow->GetRootComponent());
@@ -236,7 +239,7 @@ void ABoatPawn::UpdateWaterFlow()
 		{
 			WaterFlowDirection = Spline->FindDirectionClosestToWorldLocation(GetActorLocation(), ESplineCoordinateSpace::World);
 			WaterFlowDirection.Z = 0;
-			BoatMesh->SetPhysicsLinearVelocity(WaterFlowDirection * Force);
+			AddMovementInput(WaterFlowDirection, Force, true);
 		}
 	}
 }
@@ -268,4 +271,17 @@ void ABoatPawn::MoveTowardsSiren()
 	SirenHeading.Z = 0;
 	SirenHeading = SirenHeading.GetClampedToSize(-1, 1);
 	BoatMesh->AddForce(SirenHeading * SirenForce * BoatMesh->GetMass());
+}
+
+void ABoatPawn::OnHit(UPrimitiveComponent *HitComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &Hit)
+{
+	if (OtherActor->GetName() == "Landscape_1")
+	{
+		FVector PushDirection = this->GetVelocity() * -1;
+
+		PushDirection.Z = 0;
+
+		GetWorld()->GetFirstPlayerController()->PlayerCameraManager->StartCameraShake(CamShake, 1);
+		AddMovementInput(PushDirection, 10, true);
+	}
 }
