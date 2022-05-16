@@ -100,4 +100,10 @@ private:
 	FVector SirenLocation;
 	
 	bool bInSirenZone;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UMatineeCameraShake> CamShake;
+
+	UFUNCTION()    
+    void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 };
