@@ -31,7 +31,6 @@ void ABoatPawn::BeginPlay()
 	BoatHealth = MaxHealth;
 	CrewHealth = MaxHealth;
 	bInSirenZone = false;
-	bHasCollided = false;
 
 	MouseCursor = GetWorld()->SpawnActor<AMouseCursor>(MouseCursorClass);
 	MouseCursor->SetOwner(this);
