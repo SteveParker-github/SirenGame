@@ -16,6 +16,9 @@ public:
 	// Sets default values for this actor's properties
 	AProjectile();
 
+	// Called every frame
+    virtual void Tick(float DeltaTime) override;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -24,8 +27,6 @@ protected:
 	void OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 
 	// Function that initializes the projectile's velocity in the shoot direction.
 	void FireInDirection(const FVector& ShootDirection);

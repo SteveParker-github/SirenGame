@@ -1,17 +1,16 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BoatPawn.h"
-
 #include "MouseCursor.h"
 #include "Math/UnrealMathUtility.h"
 #include "Kismet/GameplayStatics.h"
-
 #include "DrawDebugHelpers.h"
 #include "Projectile.h"
 #include "GenericPlatform/GenericPlatformMath.h"
-
 #include "WaterFlow.h"
 #include "Components/SplineComponent.h"
+#include "FP_Character.h"
+#include "InGameHUD.h"
 
 // Sets default values
 ABoatPawn::ABoatPawn()
@@ -21,6 +20,23 @@ ABoatPawn::ABoatPawn()
 
 	BoatMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BoatMesh"));
 	SetRootComponent(BoatMesh);
+
+	TriggerZone = CreateDefaultSubobject<UBoxComponent>(TEXT("TriggerZone"));
+	TriggerZone->SetupAttachment(BoatMesh);
+
+	TriggerZone->OnComponentBeginOverlap.AddDynamic(this, &ABoatPawn::OnOverlapBegin);
+
+	bIsCurrentlyPossessed = false;
+
+	MaxBoatHealth = MaxStartingHealth;
+	MaxCrewHealth = MaxStartingHealth;
+	MaxArcherHealth = MaxStartingHealth;
+	BoatHealth = MaxBoatHealth;
+	CrewHealth = MaxCrewHealth;
+	ArcherHealth = MaxArcherHealth;
+
+	bInSirenZone = false;
+	bCanSwap = false;
 }
 
 // Called when the game starts or when spawned
@@ -28,20 +44,31 @@ void ABoatPawn::BeginPlay()
 {
 	Super::BeginPlay();
 
-	BoatHealth = MaxHealth;
-	CrewHealth = MaxHealth;
-	bInSirenZone = false;
-
+	AInGameHUD *InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+	if (InGameHUD)
+	{
+		InGameHUD->UpdateCrewHealth(CrewHealth / MaxCrewHealth);
+		InGameHUD->UpdateBoatHealth(BoatHealth / MaxBoatHealth);
+		InGameHUD->UpdateArcherHealth(ArcherHealth / MaxArcherHealth);
+	}
 	MouseCursor = GetWorld()->SpawnActor<AMouseCursor>(MouseCursorClass);
 	MouseCursor->SetOwner(this);
 
+	BoatMesh->OnComponentHit.AddDynamic(this, &ABoatPawn::OnHit);
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AWaterFlow::StaticClass(), WaterFlows);
+
+	FPCharacter = Cast<AFP_Character>(UGameplayStatics::GetActorOfClass(GetWorld(), AFP_Character::StaticClass()));
 }
 
 // Called every frame
 void ABoatPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if (!bIsCurrentlyPossessed)
+	{
+		return;
+	}
 
 	WaterDirectionTimer -= DeltaTime;
 
@@ -59,11 +86,21 @@ void ABoatPawn::Tick(float DeltaTime)
 		SetActorRotation(NewRotation, ETeleportType::None);
 	}
 
-	AddMovementInput(GetActorForwardVector() * MovementInput.Size());
+	FVector Direction = GetActorForwardVector() * MovementInput.Size();
+	Direction.Z = 0;
+	AddMovementInput(Direction);
 
 	if (bInSirenZone)
 	{
-		CrewHealth -= DeltaTime * 1; // Causes 1 damge per second.
+		float Damage = DeltaTime * 1; // Causes 1 damge per second.
+		CrewHealth -= Damage;
+		ArcherHealth -= Damage;
+		AInGameHUD *InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+		if (InGameHUD)
+		{
+			InGameHUD->UpdateCrewHealth(CrewHealth / MaxCrewHealth);
+			InGameHUD->UpdateArcherHealth(ArcherHealth / MaxArcherHealth);
+		}
 		MoveTowardsSiren();
 	}
 	else
@@ -83,6 +120,7 @@ void ABoatPawn::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent)
 	PlayerInputComponent->BindAction(TEXT("Aim"), EInputEvent::IE_Pressed, this, &ABoatPawn::SetAim);
 	PlayerInputComponent->BindAction(TEXT("Aim"), EInputEvent::IE_Released, this, &ABoatPawn::UnsetAim);
 	PlayerInputComponent->BindAction(TEXT("Fire"), EInputEvent::IE_Pressed, this, &ABoatPawn::Fire);
+	PlayerInputComponent->BindAction(TEXT("Activate"), EInputEvent::IE_Pressed, this, &ABoatPawn::SwapCharacter);
 }
 
 float ABoatPawn::TakeDamage(float DamageAmount, struct FDamageEvent const &DamageEvent, class AController *EventInstigator, AActor *DamageCauser)
@@ -92,6 +130,13 @@ float ABoatPawn::TakeDamage(float DamageAmount, struct FDamageEvent const &Damag
 	BoatHealth -= DamageToApply;
 
 	UE_LOG(LogTemp, Warning, TEXT("Health: %f"), BoatHealth);
+
+	AInGameHUD *InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+	if (InGameHUD)
+	{
+		InGameHUD->UpdateBoatHealth(BoatHealth / MaxBoatHealth);
+	}
+
 	return DamageToApply;
 }
 
@@ -104,6 +149,44 @@ void ABoatPawn::SetSirenZone(FVector NewSirenLocation)
 void ABoatPawn::UnsetSirenZone()
 {
 	bInSirenZone = false;
+}
+
+void ABoatPawn::OnOverlapBegin(class UPrimitiveComponent *OverlappedComp, class AActor *OtherActor, class UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Boat: Trigger something"));
+
+	if (bIsCurrentlyPossessed)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Boat: activate message to swap"));
+		bCanSwap = true;
+	}
+}
+
+void ABoatPawn::OnOverlapEnd(class UPrimitiveComponent *OverlappedComp, class AActor *OtherActor, class UPrimitiveComponent *OtherComp, int32 OtherBodyIndex)
+{
+	if (bIsCurrentlyPossessed)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Player: de-activate message to swap"));
+		bCanSwap = false;
+	}
+}
+
+void ABoatPawn::RemoveHUD()
+{
+	AInGameHUD *InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+	if (InGameHUD)
+	{
+		InGameHUD->RemoveHUD();
+	}
+}
+
+void ABoatPawn::AddHUD()
+{
+	AInGameHUD *InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+	if (InGameHUD)
+	{
+		InGameHUD->AddHUD();
+	}
 }
 
 void ABoatPawn::MoveForward(float AxisValue)
@@ -163,7 +246,7 @@ void ABoatPawn::InitiateAim()
 	{
 		FVector ActorLocation = GetActorLocation();
 		FVector NewLocation = Hit.Location - ActorLocation;
-		NewLocation = NewLocation.GetClampedToSize(-2000, 2000);
+		NewLocation = NewLocation.GetClampedToSize(-200, 2000);
 		NewLocation += ActorLocation;
 		MouseCursor->MoveCursor(NewLocation);
 		FVector HalfWay = ((NewLocation - ActorLocation) / 2 + ActorLocation);
@@ -193,12 +276,16 @@ void ABoatPawn::Fire()
 		FVector ActorLocation = GetActorLocation();
 		FVector MouseLocation = MouseCursor->GetActorLocation();
 		FVector ArrowLocation = ActorLocation;
-		ArrowLocation.Z += 200.f;
+		ArrowLocation.Z += 50.f;
 		FRotator ArrowDirection = (MouseLocation - ActorLocation).Rotation();
 		float TargetDistance = ArrowLocation.Distance(MouseLocation, ActorLocation);
 		// Parabola/hyperbola graph
-		ArrowDirection.Pitch = -2.6016239843361 * FMath::Pow(10, -6) * FMath::Pow(TargetDistance, 2) - 0.0104899 * TargetDistance + 89.7078;
-
+		// ArrowDirection.Pitch = -2.6016239843361 * FMath::Pow(10, -6) * FMath::Pow(TargetDistance, 2) - 0.0104899 * TargetDistance + 89.7078;
+		ArrowDirection.Pitch = 0;
+		if (FMath::Abs(TargetDistance) > 500) {
+			ArrowDirection.Pitch = 1.333 * FMath::Pow(10, -8) * FMath::Pow(TargetDistance, 3) - 4 * FMath::Pow(10, -5) * FMath::Pow(TargetDistance, 2) + 0.057 * TargetDistance - 15;
+		}
+		UE_LOG(LogTemp, Warning, TEXT("angle %f"), ArrowDirection.Pitch);
 		FActorSpawnParameters SpawnParams;
 		SpawnParams.Owner = this;
 		SpawnParams.Instigator = GetInstigator();
@@ -220,6 +307,21 @@ void ABoatPawn::Fire()
 	}
 }
 
+void ABoatPawn::SwapCharacter()
+{
+	if (bCanSwap)
+	{
+		SavedController = GetController();
+		SavedController->UnPossess();
+		SavedController->Possess(Cast<APawn>(FPCharacter));
+		bIsCurrentlyPossessed = false;
+		FPCharacter->bIsCurrentlyPossessed = true;
+		FPCharacter->bCanSwap = false;
+		RemoveHUD();
+		bCanSwap = false;
+	}
+}
+
 void ABoatPawn::UpdateWaterFlow()
 {
 	if (WaterDirectionTimer <= 0)
@@ -227,7 +329,7 @@ void ABoatPawn::UpdateWaterFlow()
 		NewWaterDirection();
 		WaterDirectionTimer = WaterDirectionCooldown;
 	}
-	
+
 	if (TargetWaterFlow != nullptr)
 	{
 		USplineComponent *Spline = Cast<USplineComponent>(TargetWaterFlow->GetRootComponent());
@@ -236,7 +338,7 @@ void ABoatPawn::UpdateWaterFlow()
 		{
 			WaterFlowDirection = Spline->FindDirectionClosestToWorldLocation(GetActorLocation(), ESplineCoordinateSpace::World);
 			WaterFlowDirection.Z = 0;
-			BoatMesh->SetPhysicsLinearVelocity(WaterFlowDirection * Force);
+			AddMovementInput(WaterFlowDirection, Force, true);
 		}
 	}
 }
@@ -267,5 +369,19 @@ void ABoatPawn::MoveTowardsSiren()
 	FVector SirenHeading = SirenLocation - GetActorLocation();
 	SirenHeading.Z = 0;
 	SirenHeading = SirenHeading.GetClampedToSize(-1, 1);
-	BoatMesh->AddForce(SirenHeading * SirenForce * BoatMesh->GetMass());
+	// BoatMesh->AddForce(SirenHeading * SirenForce * BoatMesh->GetMass());
+	AddMovementInput(SirenHeading * SirenForce, 10, true);
+}
+
+void ABoatPawn::OnHit(UPrimitiveComponent *HitComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &Hit)
+{
+	if (OtherActor->GetName() == "Landscape_1")
+	{
+		FVector PushDirection = this->GetVelocity() * -1;
+
+		PushDirection.Z = 0;
+
+		GetWorld()->GetFirstPlayerController()->PlayerCameraManager->StartCameraShake(CamShake, 1);
+		AddMovementInput(PushDirection, 10, true);
+	}
 }

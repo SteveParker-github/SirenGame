@@ -33,7 +33,7 @@ void ASirenPawn::BeginPlay()
 	Super::BeginPlay();
 
 	FVector MoveTrigger = GetActorLocation();
-	MoveTrigger.Z = -40;
+	MoveTrigger.Z = 2830.0;
 	TriggerZone->SetWorldLocation(MoveTrigger);
 
 	TriggerZone->OnComponentEndOverlap.AddDynamic(this, &ASirenPawn::OnOverlapEnd);
