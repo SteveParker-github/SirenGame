@@ -4,10 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "Components/BoxComponent.h"
 #include "BoatPawn.generated.h"
 
-
 class AMouseCursor;
+class AFP_Character;
 
 UCLASS()
 class SIRENS_CALL_API ABoatPawn : public APawn
@@ -22,41 +23,80 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void SetupPlayerInputComponent(class UInputComponent *PlayerInputComponent) override;
 
-	float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
+	float TakeDamage(float DamageAmount, struct FDamageEvent const &DamageEvent, class AController *EventInstigator, AActor *DamageCauser) override;
 
 	void SetSirenZone(FVector SirenLocation);
 
 	void UnsetSirenZone();
 
+	UFUNCTION()
+	void OnOverlapBegin(
+		class UPrimitiveComponent *OverlappedComp,
+		class AActor *OtherActor,
+		class UPrimitiveComponent *OtherComp,
+		int32 OtherBodyIndex,
+		bool bFromSweep,
+		const FHitResult &SweepResult);
+
+	UFUNCTION()
+	void OnOverlapEnd(
+		class UPrimitiveComponent *OverlappedComp,
+		class AActor *OtherActor,
+		class UPrimitiveComponent *OtherComp,
+		int32 OtherBodyIndex);
+
+	UFUNCTION()
+	void RemoveHUD();
+
+	UFUNCTION()
+	void AddHUD();
+
+	UPROPERTY(VisibleAnywhere)
+	float MaxBoatHealth;
+
 	UPROPERTY(VisibleAnywhere)
 	float BoatHealth;
 
 	UPROPERTY(VisibleAnywhere)
+	float MaxCrewHealth;
+
+	UPROPERTY(VisibleAnywhere)
 	float CrewHealth;
+
+	UPROPERTY(VisibleAnywhere)
+	float MaxArcherHealth;
+
+	UPROPERTY(VisibleAnywhere)
+	float ArcherHealth;
+
+	bool bIsCurrentlyPossessed;
+
+	bool bCanSwap;
 
 private:
 	void MoveForward(float AxisValue);
 	void MoveRight(float AxisValue);
 	void MoveControllerForward(float AxisValue);
-	void MoveControllerRight(float AxisValue);	
+	void MoveControllerRight(float AxisValue);
 	void InitiateAim();
 	void SetAim();
 	void UnsetAim();
 	void Fire();
+	void SwapCharacter();
 
 	void UpdateWaterFlow();
 	void NewWaterDirection();
 	void MoveTowardsSiren();
 
 	bool bAiming;
-	
+
 	FVector MovementInput;
 
 	UPROPERTY(EditAnywhere)
@@ -66,14 +106,14 @@ private:
 	TSubclassOf<AMouseCursor> MouseCursorClass;
 
 	UPROPERTY()
-	AMouseCursor* MouseCursor;
+	AMouseCursor *MouseCursor;
 
 	// Projectile class to spawn.
 	UPROPERTY(EditDefaultsOnly, Category = Projectile)
 	TSubclassOf<class AProjectile> ProjectileClass;
 
 	UPROPERTY(EditDefaultsOnly)
-	float MaxHealth = 100;
+	float MaxStartingHealth = 100;
 
 	float WaterDirectionTimer = 0;
 
@@ -84,26 +124,33 @@ private:
 	float Force = 0.4;
 
 	UPROPERTY(EditDefaultsOnly, Category = Siren)
-	float SirenForce = 1385;
+	float SirenForce = 0.05;
 
 	TArray<AActor *> WaterFlows;
 
 	FVector TargetLocation;
 
-	AActor* TargetWaterFlow;
+	AActor *TargetWaterFlow;
 
 	FVector WaterFlowDirection;
 
 	UPROPERTY(VisibleAnywhere)
-	UStaticMeshComponent* BoatMesh;
+	UStaticMeshComponent *BoatMesh;
 
 	FVector SirenLocation;
-	
+
 	bool bInSirenZone;
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UMatineeCameraShake> CamShake;
 
-	UFUNCTION()    
-    void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent *HitComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &Hit);
+
+	AController *SavedController;
+
+	UPROPERTY(VisibleAnywhere)
+	UBoxComponent* TriggerZone;
+
+	AFP_Character* FPCharacter;
 };

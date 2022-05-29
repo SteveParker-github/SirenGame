@@ -28,11 +28,8 @@ AProjectile::AProjectile()
 		// Use this component to drive this projectile's movement.
 		ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovementComponent"));
 		ProjectileMovementComponent->SetUpdatedComponent(Root);
-		ProjectileMovementComponent->InitialSpeed = 1425.0f;
-		ProjectileMovementComponent->MaxSpeed = 1425.0f;
 		ProjectileMovementComponent->bRotationFollowsVelocity = true;
 		ProjectileMovementComponent->bShouldBounce = false;
-		ProjectileMovementComponent->ProjectileGravityScale = 1.0f;
 	}
 
 	InitialLifeSpan = 4.0f;
@@ -46,7 +43,7 @@ void AProjectile::BeginPlay()
 
 void AProjectile::OnOverlapBegin(class UPrimitiveComponent *OverlappedComp, class AActor *OtherActor, class UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult)
 {
-	ABoatPawn* Boat = Cast<ABoatPawn>(OtherActor);
+	APawn* Boat = Cast<APawn>(OtherActor);
 	if (Boat == nullptr) return;
 	FPointDamageEvent DamageEvent(Damage, SweepResult, GetActorForwardVector(), nullptr);
 	AController* BoatController = Boat->GetController();
