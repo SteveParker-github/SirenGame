@@ -42,6 +42,15 @@ void UHealthWidget::UpdateArcherHealth(float HealthPercentage)
     }
 }
 
+void UHealthWidget::UpdateStamina(float StaminaPercentage)
+{
+    if(ProgressStamina)
+    {
+        ProgressStamina->SetPercent(StaminaPercentage);
+        ProgressStamina->SetFillColorAndOpacity(GetColour(StaminaPercentage));
+    }
+}
+
 FLinearColor UHealthWidget::GetColour(float Percentage)
 {
     if (Percentage > 0.66f) return FLinearColor(0, 1, 0.1f, 1);
