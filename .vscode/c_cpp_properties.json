@@ -1,19 +1,14 @@
 {
-    "configurations": [
-        {
-            "name": "Sirens_CallEditor Editor Win64 Development (Sirens_Call)",
-            "intelliSenseMode": "msvc-x64",
-            "compileCommands": "E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call.json",
-            "cStandard": "c17",
-            "cppStandard": "c++17"
-        },
-        {
-            "name": "Win32",
-            "intelliSenseMode": "msvc-x64",
-            "compileCommands": "E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Default.json",
-            "cStandard": "c17",
-            "cppStandard": "c++17"
-        }
-    ],
-    "version": 4
+	"configurations": [
+		{
+			"name": "Sirens_CallEditor Editor Win64 Development (Sirens_Call)",
+			"intelliSenseMode": "msvc-x64",
+			"compileCommands": "C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call.json"
+		},
+		{
+			"name": "Win32",
+			"intelliSenseMode": "msvc-x64",
+			"compileCommands": "C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Default.json"
+		}
+	]
 }

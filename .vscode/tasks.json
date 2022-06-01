@@ -9,13 +9,13 @@
 				"Sirens_Call",
 				"Win32",
 				"Debug",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -26,7 +26,7 @@
 				"Sirens_Call",
 				"Win32",
 				"Debug",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
@@ -35,7 +35,7 @@
 			],
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -46,13 +46,13 @@
 				"Sirens_Call",
 				"Win32",
 				"Debug",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -63,13 +63,13 @@
 				"Sirens_Call",
 				"Win32",
 				"DebugGame",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -80,7 +80,7 @@
 				"Sirens_Call",
 				"Win32",
 				"DebugGame",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
@@ -89,7 +89,7 @@
 			],
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -100,13 +100,13 @@
 				"Sirens_Call",
 				"Win32",
 				"DebugGame",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -117,13 +117,13 @@
 				"Sirens_Call",
 				"Win32",
 				"Development",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -134,7 +134,7 @@
 				"Sirens_Call",
 				"Win32",
 				"Development",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
@@ -143,7 +143,7 @@
 			],
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -154,13 +154,13 @@
 				"Sirens_Call",
 				"Win32",
 				"Development",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -171,13 +171,13 @@
 				"Sirens_Call",
 				"Win32",
 				"Shipping",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -188,7 +188,7 @@
 				"Sirens_Call",
 				"Win32",
 				"Shipping",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
@@ -197,7 +197,7 @@
 			],
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -208,13 +208,13 @@
 				"Sirens_Call",
 				"Win32",
 				"Shipping",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -225,13 +225,13 @@
 				"Sirens_Call",
 				"Win32",
 				"Test",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -242,7 +242,7 @@
 				"Sirens_Call",
 				"Win32",
 				"Test",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
@@ -251,7 +251,7 @@
 			],
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -262,13 +262,13 @@
 				"Sirens_Call",
 				"Win32",
 				"Test",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -279,13 +279,13 @@
 				"Sirens_Call",
 				"Win64",
 				"Debug",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -296,7 +296,7 @@
 				"Sirens_Call",
 				"Win64",
 				"Debug",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
@@ -305,7 +305,7 @@
 			],
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -316,13 +316,13 @@
 				"Sirens_Call",
 				"Win64",
 				"Debug",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -333,13 +333,13 @@
 				"Sirens_Call",
 				"Win64",
 				"DebugGame",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -350,7 +350,7 @@
 				"Sirens_Call",
 				"Win64",
 				"DebugGame",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
@@ -359,7 +359,7 @@
 			],
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -370,13 +370,13 @@
 				"Sirens_Call",
 				"Win64",
 				"DebugGame",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -387,13 +387,13 @@
 				"Sirens_Call",
 				"Win64",
 				"Development",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -404,7 +404,7 @@
 				"Sirens_Call",
 				"Win64",
 				"Development",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
@@ -413,7 +413,7 @@
 			],
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -424,13 +424,13 @@
 				"Sirens_Call",
 				"Win64",
 				"Development",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -441,13 +441,13 @@
 				"Sirens_Call",
 				"Win64",
 				"Shipping",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -458,7 +458,7 @@
 				"Sirens_Call",
 				"Win64",
 				"Shipping",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
@@ -467,7 +467,7 @@
 			],
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -478,13 +478,13 @@
 				"Sirens_Call",
 				"Win64",
 				"Shipping",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -495,13 +495,13 @@
 				"Sirens_Call",
 				"Win64",
 				"Test",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -512,7 +512,7 @@
 				"Sirens_Call",
 				"Win64",
 				"Test",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
@@ -521,7 +521,7 @@
 			],
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -532,13 +532,13 @@
 				"Sirens_Call",
 				"Win64",
 				"Test",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -549,13 +549,13 @@
 				"Sirens_CallEditor",
 				"Win64",
 				"Debug",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -566,7 +566,7 @@
 				"Sirens_CallEditor",
 				"Win64",
 				"Debug",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
@@ -575,7 +575,7 @@
 			],
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -586,13 +586,13 @@
 				"Sirens_CallEditor",
 				"Win64",
 				"Debug",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -603,13 +603,13 @@
 				"Sirens_CallEditor",
 				"Win64",
 				"DebugGame",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -620,7 +620,7 @@
 				"Sirens_CallEditor",
 				"Win64",
 				"DebugGame",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
@@ -629,7 +629,7 @@
 			],
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -640,13 +640,13 @@
 				"Sirens_CallEditor",
 				"Win64",
 				"DebugGame",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -657,13 +657,13 @@
 				"Sirens_CallEditor",
 				"Win64",
 				"Development",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -674,7 +674,7 @@
 				"Sirens_CallEditor",
 				"Win64",
 				"Development",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
@@ -683,7 +683,7 @@
 			],
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		},
 		{
@@ -694,13 +694,13 @@
 				"Sirens_CallEditor",
 				"Win64",
 				"Development",
-				"E:\\ProgramSolutions\\Unreal\\Sirens\\Sirens_Call.uproject",
+				"C:\\Users\\johnil1\\Desktop\\SirenGame\\Sirens_Call.uproject",
 				"-waitmutex"
 			],
 			"problemMatcher": "$msCompile",
 			"type": "shell",
 			"options": {
-				"cwd": "P:\\Program Files\\Epic Games\\UE_4.26"
+				"cwd": "D:\\UE_4.27"
 			}
 		}
 	]

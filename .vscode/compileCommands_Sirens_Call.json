@@ -1,117 +1,117 @@
 [
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\BoatPawn.cpp",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\BoatPawn.h",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\FP_Character.cpp",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\FP_Character.h",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\HealthWidget.cpp",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\HealthWidget.h",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\InGameHUD.cpp",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\InGameHUD.h",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\MinimapWidget.cpp",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\MinimapWidget.h",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\MouseCursor.cpp",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\MouseCursor.h",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\Projectile.cpp",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\Projectile.h",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\SirenPawn.cpp",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\SirenPawn.h",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\Sirens_Call.Build.cs",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\Sirens_Call.cpp",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\Sirens_Call.h",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\WaterFlow.cpp",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "E:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\WaterFlow.h",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "e:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\MainPlayerController.h",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    },
-    {
-        "file": "e:\\\\ProgramSolutions\\\\Unreal\\\\Sirens\\\\Source\\\\Sirens_Call\\\\MainPlayerController.cpp",
-        "command": "\"cl.exe\" @\"E:\\ProgramSolutions\\Unreal\\Sirens\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.187.rsp\"",
-        "directory": "P:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
-    }
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\BoatPawn.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\BoatPawn.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\FP_Character.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\FP_Character.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\HealthWidget.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\HealthWidget.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\InGameHUD.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\InGameHUD.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\MainPlayerController.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\MainPlayerController.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\MinimapWidget.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\MinimapWidget.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\MouseCursor.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\MouseCursor.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\Projectile.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\Projectile.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\SirenPawn.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\SirenPawn.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\Sirens_Call.Build.cs",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\Sirens_Call.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\Sirens_Call.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\WaterFlow.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\johnil1\\\\Desktop\\\\SirenGame\\\\Source\\\\Sirens_Call\\\\WaterFlow.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"C:\\Users\\johnil1\\Desktop\\SirenGame\\.vscode\\compileCommands_Sirens_Call\\Sirens_Call.215.rsp\"",
+		"directory": "D:\\UE_4.27\\Engine\\Source"
+	}
 ]
