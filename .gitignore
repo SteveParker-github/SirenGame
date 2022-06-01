@@ -1,5 +1,10 @@
 # Visual Studio 2015 user specific files
+.vs/
 .vscode/
+
+#Plastic SCM
+.plastic/
+ignore.conf
 
 # Compiled Object files
 *.slo
