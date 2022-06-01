@@ -28,7 +28,7 @@ void AInGameHUD::BeginPlay()
 
     if (MinimapWidgetClass)
     {
-        MinimapWidget = CreateWidget<UMinimapWidget>(GetWorld(), MinimapWidgetClass);
+        MinimapWidget = CreateWidget<UUserWidget>(GetWorld(), MinimapWidgetClass);
         if (MinimapWidget)
         {
             MinimapWidget->AddToViewport();
@@ -67,14 +67,22 @@ void AInGameHUD::UpdateArcherHealth(float HealthPercentage)
     }
 }
 
+void AInGameHUD::UpdateStamina(float StaminaPercentage)
+{
+    if (HealthWidget)
+    {
+        HealthWidget->UpdateStamina(StaminaPercentage);
+    }
+}
+
 void AInGameHUD::RemoveHUD()
 {
     HealthWidget->RemoveFromViewport();
-    MinimapWidget->RemoveFromViewport();
+    // MinimapWidget->RemoveFromViewport();
 }
 
 void AInGameHUD::AddHUD()
 {
     HealthWidget->AddToViewport();
-    MinimapWidget->AddToViewport();
+    // MinimapWidget->AddToViewport();
 }

@@ -76,6 +76,12 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	float ArcherHealth;
 
+	UPROPERTY(VisibleAnywhere)
+	float MaxStamina;
+
+	UPROPERTY(VisibleAnywhere)
+	float Stamina;
+
 	bool bIsCurrentlyPossessed;
 
 	bool bCanSwap;
@@ -90,6 +96,8 @@ private:
 	void UnsetAim();
 	void Fire();
 	void SwapCharacter();
+	void SetPowerRow();
+	void UnsetPowerRow();
 
 	void UpdateWaterFlow();
 	void NewWaterDirection();
@@ -153,4 +161,11 @@ private:
 	UBoxComponent* TriggerZone;
 
 	AFP_Character* FPCharacter;
+
+	UPROPERTY(EditAnywhere)
+	UParticleSystem* WindEffect;
+
+	float WindEffectTimer = 0;
+
+	bool bIsPowerRow;
 };

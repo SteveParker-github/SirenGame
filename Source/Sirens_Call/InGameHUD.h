@@ -36,6 +36,9 @@ public:
 	void UpdateArcherHealth(float HealthPercentage);
 
 	UFUNCTION()
+	void UpdateStamina(float StaminaPercentage);
+
+	UFUNCTION()
 	void RemoveHUD();
 
 	UFUNCTION()
@@ -48,5 +51,5 @@ public:
 
 private:
 	UHealthWidget* HealthWidget;
-	UMinimapWidget* MinimapWidget;
+	UUserWidget* MinimapWidget;
 };

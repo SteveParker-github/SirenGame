@@ -31,12 +31,15 @@ ABoatPawn::ABoatPawn()
 	MaxBoatHealth = MaxStartingHealth;
 	MaxCrewHealth = MaxStartingHealth;
 	MaxArcherHealth = MaxStartingHealth;
+	MaxStamina = MaxStartingHealth;
 	BoatHealth = MaxBoatHealth;
 	CrewHealth = MaxCrewHealth;
 	ArcherHealth = MaxArcherHealth;
+	Stamina = MaxStamina;
 
 	bInSirenZone = false;
 	bCanSwap = false;
+	bIsPowerRow = false;
 }
 
 // Called when the game starts or when spawned
@@ -50,6 +53,7 @@ void ABoatPawn::BeginPlay()
 		InGameHUD->UpdateCrewHealth(CrewHealth / MaxCrewHealth);
 		InGameHUD->UpdateBoatHealth(BoatHealth / MaxBoatHealth);
 		InGameHUD->UpdateArcherHealth(ArcherHealth / MaxArcherHealth);
+		InGameHUD->UpdateStamina(Stamina / MaxStamina);
 	}
 	MouseCursor = GetWorld()->SpawnActor<AMouseCursor>(MouseCursorClass);
 	MouseCursor->SetOwner(this);
@@ -88,6 +92,23 @@ void ABoatPawn::Tick(float DeltaTime)
 
 	FVector Direction = GetActorForwardVector() * MovementInput.Size();
 	Direction.Z = 0;
+	
+	if (bIsPowerRow)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("PowerRow!!!"));
+		if (Stamina > 0) {
+			BoatMesh->AddForce(GetActorForwardVector() * 1500 * BoatMesh->GetMass());
+			Stamina -= DeltaTime * 20;
+			AInGameHUD *InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+			InGameHUD->UpdateStamina(Stamina / MaxStamina);
+		}
+	}
+	else 
+	{
+		AInGameHUD *InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+		Stamina = FMath::Min(Stamina + DeltaTime * 2, MaxStamina);
+		InGameHUD->UpdateStamina(Stamina / MaxStamina);
+	}
 	AddMovementInput(Direction);
 
 	if (bInSirenZone)
@@ -121,6 +142,8 @@ void ABoatPawn::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent)
 	PlayerInputComponent->BindAction(TEXT("Aim"), EInputEvent::IE_Released, this, &ABoatPawn::UnsetAim);
 	PlayerInputComponent->BindAction(TEXT("Fire"), EInputEvent::IE_Pressed, this, &ABoatPawn::Fire);
 	PlayerInputComponent->BindAction(TEXT("Activate"), EInputEvent::IE_Pressed, this, &ABoatPawn::SwapCharacter);
+	PlayerInputComponent->BindAction(TEXT("PowerRow"), EInputEvent::IE_Pressed, this, &ABoatPawn::SetPowerRow);
+	PlayerInputComponent->BindAction(TEXT("PowerRow"), EInputEvent::IE_Released, this, &ABoatPawn::UnsetPowerRow);
 }
 
 float ABoatPawn::TakeDamage(float DamageAmount, struct FDamageEvent const &DamageEvent, class AController *EventInstigator, AActor *DamageCauser)
@@ -282,7 +305,8 @@ void ABoatPawn::Fire()
 		// Parabola/hyperbola graph
 		// ArrowDirection.Pitch = -2.6016239843361 * FMath::Pow(10, -6) * FMath::Pow(TargetDistance, 2) - 0.0104899 * TargetDistance + 89.7078;
 		ArrowDirection.Pitch = 0;
-		if (FMath::Abs(TargetDistance) > 500) {
+		if (FMath::Abs(TargetDistance) > 500)
+		{
 			ArrowDirection.Pitch = 1.333 * FMath::Pow(10, -8) * FMath::Pow(TargetDistance, 3) - 4 * FMath::Pow(10, -5) * FMath::Pow(TargetDistance, 2) + 0.057 * TargetDistance - 15;
 		}
 		UE_LOG(LogTemp, Warning, TEXT("angle %f"), ArrowDirection.Pitch);
@@ -322,6 +346,16 @@ void ABoatPawn::SwapCharacter()
 	}
 }
 
+void ABoatPawn::SetPowerRow()
+{
+	bIsPowerRow = true;
+}
+
+void ABoatPawn::UnsetPowerRow()
+{
+	bIsPowerRow = false;
+}
+
 void ABoatPawn::UpdateWaterFlow()
 {
 	if (WaterDirectionTimer <= 0)
@@ -339,6 +373,12 @@ void ABoatPawn::UpdateWaterFlow()
 			WaterFlowDirection = Spline->FindDirectionClosestToWorldLocation(GetActorLocation(), ESplineCoordinateSpace::World);
 			WaterFlowDirection.Z = 0;
 			AddMovementInput(WaterFlowDirection, Force, true);
+			if (WindEffectTimer == 0)
+			{
+				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), WindEffect, GetActorLocation(), WaterFlowDirection.Rotation());
+				WindEffectTimer = 30;
+			}
+			--WindEffectTimer;
 		}
 	}
 }
@@ -371,6 +411,14 @@ void ABoatPawn::MoveTowardsSiren()
 	SirenHeading = SirenHeading.GetClampedToSize(-1, 1);
 	// BoatMesh->AddForce(SirenHeading * SirenForce * BoatMesh->GetMass());
 	AddMovementInput(SirenHeading * SirenForce, 10, true);
+	if (WindEffectTimer == 0)
+	{
+		FRotator test = SirenHeading.Rotation();
+		UE_LOG(LogTemp, Warning, TEXT("%s"), *test.ToString());
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), WindEffect, GetActorLocation(), SirenHeading.Rotation());
+		WindEffectTimer = 30;
+	}
+	--WindEffectTimer;
 }
 
 void ABoatPawn::OnHit(UPrimitiveComponent *HitComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &Hit)
