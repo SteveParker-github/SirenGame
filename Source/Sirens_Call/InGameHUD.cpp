@@ -78,11 +78,25 @@ void AInGameHUD::UpdateStamina(float StaminaPercentage)
 void AInGameHUD::RemoveHUD()
 {
     HealthWidget->RemoveFromViewport();
-    // MinimapWidget->RemoveFromViewport();
 }
 
 void AInGameHUD::AddHUD()
 {
     HealthWidget->AddToViewport();
-    // MinimapWidget->AddToViewport();
+}
+
+void AInGameHUD::DeathHUD(int32 Zone)
+{
+    ZoneLevel = Zone;
+    MinimapWidget->RemoveFromViewport();
+    DeathScreenWidget = CreateWidget<UUserWidget>(GetWorld(), DeathScreenWidgetClass);
+    if (DeathScreenWidget)
+    {
+        DeathScreenWidget->AddToViewport();
+    }
+}
+
+int32 AInGameHUD::GetZoneLevel() const
+{
+    return ZoneLevel;
 }

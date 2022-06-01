@@ -44,12 +44,25 @@ public:
 	UFUNCTION()
 	void AddHUD();
 
+	UFUNCTION()
+	void DeathHUD(int32 Zone);
+
 	UPROPERTY(EditDefaultsOnly, Category = "Widgets")
 	TSubclassOf<UUserWidget> HealthWidgetClass;
 	UPROPERTY(EditDefaultsOnly, Category = "Widgets")
 	TSubclassOf<UUserWidget> MinimapWidgetClass;
+	UPROPERTY(EditDefaultsOnly, Category = "Widgets")
+	TSubclassOf<UUserWidget> DeathScreenWidgetClass;
+
+
+	UFUNCTION(BlueprintPure)
+	int32 GetZoneLevel() const;
+
 
 private:
 	UHealthWidget* HealthWidget;
 	UUserWidget* MinimapWidget;
+	UUserWidget* DeathScreenWidget;
+
+	int32 ZoneLevel;
 };

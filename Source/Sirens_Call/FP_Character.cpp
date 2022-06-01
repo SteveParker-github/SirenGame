@@ -50,11 +50,8 @@ void AFP_Character::SetupPlayerInputComponent(UInputComponent *PlayerInputCompon
 
 void AFP_Character::OnOverlapBegin(class UPrimitiveComponent *OverlappedComp, class AActor *OtherActor, class UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Player: Trigger something"));
-
 	if (bIsCurrentlyPossessed)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Player: activate message to swap"));
 		bCanSwap = true;
 	}
 }
@@ -63,7 +60,6 @@ void AFP_Character::OnOverlapEnd(class UPrimitiveComponent *OverlappedComp, clas
 {
 	if (bIsCurrentlyPossessed)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Player: de-activate message to swap"));
 		bCanSwap = false;
 	}
 }

@@ -86,6 +86,8 @@ public:
 
 	bool bCanSwap;
 
+	int32 CurrentCheckpoint;
+
 private:
 	void MoveForward(float AxisValue);
 	void MoveRight(float AxisValue);
@@ -102,6 +104,8 @@ private:
 	void UpdateWaterFlow();
 	void NewWaterDirection();
 	void MoveTowardsSiren();
+
+	bool IsDead();
 
 	bool bAiming;
 
