@@ -1,0 +1,8 @@
+/FI "D:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Development\TraceLog\Definitions.h" 
+/I "D:\UE_4.27\Engine\Source" 
+/I "D:\UE_4.27\Engine\Source\Runtime\TraceLog\Private" 
+/I "D:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\TraceLog" 
+/I "D:\UE_4.27\Engine\Source\Runtime" 
+/I "D:\UE_4.27\Engine\Source\Runtime\TraceLog\Public" 
+/I "D:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Core" 
+/I "D:\UE_4.27\Engine\Source\Runtime\Core\Public" 
