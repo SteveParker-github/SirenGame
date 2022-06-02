@@ -114,7 +114,7 @@ void ABoatPawn::Tick(float DeltaTime)
 
 	if (bInSirenZone)
 	{
-		float Damage = DeltaTime * 10; // Causes 1 damge per second.
+		float Damage = DeltaTime * 2; // Causes 1 damge per second.
 		CrewHealth -= Damage;
 		ArcherHealth -= Damage;
 		AInGameHUD *InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
@@ -172,6 +172,7 @@ float ABoatPawn::TakeDamage(float DamageAmount, struct FDamageEvent const &Damag
 	if (InGameHUD)
 	{
 		InGameHUD->UpdateBoatHealth(BoatHealth / MaxBoatHealth);
+		InGameHUD->AddTempDamage();
 	}
 
 	return DamageToApply;
@@ -181,11 +182,21 @@ void ABoatPawn::SetSirenZone(FVector NewSirenLocation)
 {
 	SirenLocation = NewSirenLocation;
 	bInSirenZone = true;
+	AInGameHUD *InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+	if (InGameHUD)
+	{
+		InGameHUD->AddDamage();
+	}
 }
 
 void ABoatPawn::UnsetSirenZone()
 {
 	bInSirenZone = false;
+	AInGameHUD *InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+	if (InGameHUD)
+	{
+		InGameHUD->RemoveDamage();
+	}
 }
 
 void ABoatPawn::OnOverlapBegin(class UPrimitiveComponent *OverlappedComp, class AActor *OtherActor, class UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult)
