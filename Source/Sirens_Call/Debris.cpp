@@ -33,6 +33,11 @@ void ADebris::Tick(float DeltaTime)
 	WaterDirectionTimer -= DeltaTime;
 
 	UpdateWaterFlow();
+
+	if (GetActorLocation().Z < 2000)
+	{
+		this->Destroy();
+	}
 }
 
 void ADebris::UpdateWaterFlow()

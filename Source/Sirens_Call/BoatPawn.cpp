@@ -40,6 +40,7 @@ ABoatPawn::ABoatPawn()
 	bInSirenZone = false;
 	bCanSwap = false;
 	bIsPowerRow = false;
+	CurrentCheckpoint = 1;
 }
 
 // Called when the game starts or when spawned
@@ -92,18 +93,18 @@ void ABoatPawn::Tick(float DeltaTime)
 
 	FVector Direction = GetActorForwardVector() * MovementInput.Size();
 	Direction.Z = 0;
-	
+
 	if (bIsPowerRow)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("PowerRow!!!"));
-		if (Stamina > 0) {
+		if (Stamina > 0)
+		{
 			BoatMesh->AddForce(GetActorForwardVector() * 1500 * BoatMesh->GetMass());
 			Stamina -= DeltaTime * 20;
 			AInGameHUD *InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
 			InGameHUD->UpdateStamina(Stamina / MaxStamina);
 		}
 	}
-	else 
+	else
 	{
 		AInGameHUD *InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
 		Stamina = FMath::Min(Stamina + DeltaTime * 2, MaxStamina);
@@ -113,10 +114,11 @@ void ABoatPawn::Tick(float DeltaTime)
 
 	if (bInSirenZone)
 	{
-		float Damage = DeltaTime * 1; // Causes 1 damge per second.
+		float Damage = DeltaTime * 2; // Causes 1 damge per second.
 		CrewHealth -= Damage;
 		ArcherHealth -= Damage;
 		AInGameHUD *InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+
 		if (InGameHUD)
 		{
 			InGameHUD->UpdateCrewHealth(CrewHealth / MaxCrewHealth);
@@ -127,6 +129,20 @@ void ABoatPawn::Tick(float DeltaTime)
 	else
 	{
 		UpdateWaterFlow();
+	}
+
+	if (IsDead())
+	{
+		RemoveHUD();
+		AInGameHUD *InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+		if (InGameHUD)
+		{
+			InGameHUD->DeathHUD(CurrentCheckpoint);
+		}
+		bCanSwap = false;
+		SavedController = GetController();
+		SavedController->UnPossess();
+		this->Destroy();
 	}
 }
 
@@ -152,12 +168,11 @@ float ABoatPawn::TakeDamage(float DamageAmount, struct FDamageEvent const &Damag
 	DamageToApply = FMath::Min(BoatHealth, DamageToApply);
 	BoatHealth -= DamageToApply;
 
-	UE_LOG(LogTemp, Warning, TEXT("Health: %f"), BoatHealth);
-
 	AInGameHUD *InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
 	if (InGameHUD)
 	{
 		InGameHUD->UpdateBoatHealth(BoatHealth / MaxBoatHealth);
+		InGameHUD->AddTempDamage();
 	}
 
 	return DamageToApply;
@@ -167,20 +182,27 @@ void ABoatPawn::SetSirenZone(FVector NewSirenLocation)
 {
 	SirenLocation = NewSirenLocation;
 	bInSirenZone = true;
+	AInGameHUD *InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+	if (InGameHUD)
+	{
+		InGameHUD->AddDamage();
+	}
 }
 
 void ABoatPawn::UnsetSirenZone()
 {
 	bInSirenZone = false;
+	AInGameHUD *InGameHUD = Cast<AInGameHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+	if (InGameHUD)
+	{
+		InGameHUD->RemoveDamage();
+	}
 }
 
 void ABoatPawn::OnOverlapBegin(class UPrimitiveComponent *OverlappedComp, class AActor *OtherActor, class UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Boat: Trigger something"));
-
 	if (bIsCurrentlyPossessed)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Boat: activate message to swap"));
 		bCanSwap = true;
 	}
 }
@@ -189,7 +211,6 @@ void ABoatPawn::OnOverlapEnd(class UPrimitiveComponent *OverlappedComp, class AA
 {
 	if (bIsCurrentlyPossessed)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Player: de-activate message to swap"));
 		bCanSwap = false;
 	}
 }
@@ -309,7 +330,7 @@ void ABoatPawn::Fire()
 		{
 			ArrowDirection.Pitch = 1.333 * FMath::Pow(10, -8) * FMath::Pow(TargetDistance, 3) - 4 * FMath::Pow(10, -5) * FMath::Pow(TargetDistance, 2) + 0.057 * TargetDistance - 15;
 		}
-		UE_LOG(LogTemp, Warning, TEXT("angle %f"), ArrowDirection.Pitch);
+
 		FActorSpawnParameters SpawnParams;
 		SpawnParams.Owner = this;
 		SpawnParams.Instigator = GetInstigator();
@@ -414,11 +435,15 @@ void ABoatPawn::MoveTowardsSiren()
 	if (WindEffectTimer == 0)
 	{
 		FRotator test = SirenHeading.Rotation();
-		UE_LOG(LogTemp, Warning, TEXT("%s"), *test.ToString());
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), WindEffect, GetActorLocation(), SirenHeading.Rotation());
 		WindEffectTimer = 30;
 	}
 	--WindEffectTimer;
+}
+
+bool ABoatPawn::IsDead()
+{
+	return CrewHealth <= 0 || BoatHealth <= 0;
 }
 
 void ABoatPawn::OnHit(UPrimitiveComponent *HitComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &Hit)
